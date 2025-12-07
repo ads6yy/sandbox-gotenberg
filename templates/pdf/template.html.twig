@@ -1,0 +1,233 @@
+{# templates/static/contract_boilerplate_flex.html.twig #}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Standard Terms and Conditions</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap" rel="stylesheet">
+
+    <style>
+        /* General Document Styles */
+        body {
+            /* Changed to use the new Roboto font, falling back to Times New Roman if Roboto fails to load */
+            font-family: 'PT Serif', 'Roboto', 'Times New Roman', serif;
+            font-size: 11pt;
+            margin: 1in;
+        }
+        h1, h2, h3 {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 { font-size: 18pt; margin-bottom: 30px; }
+        h2 { font-family: 'Bungee Spice', 'Roboto', 'Times New Roman', serif; font-size: 14pt; margin-top: 25px; border-bottom: 2px solid #000; padding-bottom: 5px; }
+
+        /* Layout & Formatting */
+        .header-logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .section-number {
+            font-weight: bold;
+            display: inline-block;
+            width: 30px;
+        }
+        .indent {
+            margin-left: 40px;
+            text-indent: -20px;
+        }
+
+        /* --- FLEXBOX ADDITIONS --- */
+
+        /* 1. Flexbox for Header (Example: Logo and Title on the same line) */
+        .flex-header {
+            display: flex;
+            align-items: center; /* Vertically align items */
+            justify-content: space-between; /* Space them out */
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 10px;
+        }
+        .flex-logo {
+            flex-shrink: 0; /* Prevents logo from shrinking */
+        }
+        .flex-title {
+            flex-grow: 1; /* Allows title area to take up remaining space */
+            text-align: right;
+            font-size: 16pt;
+            font-weight: bold;
+        }
+
+        /* 2. Flexbox for Signature Block */
+        .signature-container {
+            display: flex;
+            justify-content: space-between; /* Push columns to the edges */
+            margin-top: 50px;
+        }
+        .signature-block {
+            width: 48%; /* Give each block a defined width */
+            text-align: center;
+        }
+        .signature-line {
+            border-bottom: 1px solid #000;
+            padding-top: 30px;
+            margin-bottom: 5px;
+        }
+
+        /* Table Styling */
+        .summary-table {
+            width: 80%;
+            margin: 30px auto;
+            border-collapse: collapse;
+        }
+        .summary-table th, .summary-table td {
+            border: 1px solid #ccc;
+            padding: 8px 12px;
+            text-align: left;
+        }
+        .summary-table th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        .summary-table td.align-right {
+            text-align: right;
+        }
+
+        /* PDF Specific Control */
+        .page-break-after {
+            page-break-after: always;
+        }
+        .footer {
+            /* Kept as display: none if using @page rules */
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+{# === New Flexbox Header Structure === #}
+<div class="flex-header">
+    <div class="flex-logo">
+        <img src="https://a.storyblok.com/f/192697/1920x1080/ac1dc4864a/docker-post.png" alt="Company Logo" style="max-width: 120px; height: auto;">
+    </div>
+    <div class="flex-title">
+        MASTER SERVICES AGREEMENT
+    </div>
+</div>
+<p style="text-align: center; font-style: italic;">Effective Date: January 1, 2024</p>
+
+<div style="margin-top: 50px;">
+    <p style="text-align: justify; line-height: 1.5;">
+        This Master Services Agreement ("Agreement") is entered into by and between **ServiceCo Global, Inc.**,
+        a Delaware corporation with offices at 123 Tech Tower, Silicon Valley, CA, and the **Client** (collectively, the "Parties").
+    </p>
+</div>
+
+{# Force a page break before the main content section begins #}
+<div class="page-break-after"></div>
+
+{# === Core Terms Section (omitted for brevity) === #}
+<h2>I. DEFINITIONS</h2>
+<div class="indent">
+    <p><span class="section-number">1.1.</span> **"Deliverables"** means all documents, work product, and materials developed by ServiceCo or its agents, consultants, and employees on behalf of Client as part of the Services.</p>
+    <p><span class="section-number">1.2.</span> **"Services"** means the services to be provided by ServiceCo under this Agreement, as further described in the Statement of Work ("SOW").</p>
+</div>
+
+<h2>II. SCOPE OF SERVICES</h2>
+<p>ServiceCo shall provide the Services to Client as specified in a separate Statement of Work (SOW) executed by both Parties. This Agreement governs the relationship between the Parties, but the specific details of any project will be outlined in the SOW.</p>
+
+{# === Static Table: Summary of Standard Services (unchanged) === #}
+<h3>Summary of Standard Services Provided</h3>
+<table class="summary-table">
+    <thead>
+    <tr>
+        <th>Service Area</th>
+        <th>Standard Offerings</th>
+        <th class="align-right">Base Rate (USD/Hr)</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>Consulting</td>
+        <td>Strategic Planning, Technical Advisory</td>
+        <td class="align-right">150.00</td>
+    </tr>
+    <tr>
+        <td>Development</td>
+        <td>Web Applications, API Integrations</td>
+        <td class="align-right">120.00</td>
+    </tr>
+    <tr>
+        <td>Maintenance</td>
+        <td>Bug Fixing, System Updates</td>
+        <td class="align-right">90.00</td>
+    </tr>
+    <tr>
+        <td colspan="2" style="text-align: right; font-weight: bold;">Standard Discount for Annual Contracts:</td>
+        <td class="align-right" style="font-weight: bold;">10%</td>
+    </tr>
+    </tbody>
+</table>
+
+<h2>III. FEES AND PAYMENT</h2>
+<p>Client shall pay ServiceCo the fees specified in the SOW. Payment terms are net thirty (30) days from the date of the invoice. Late payments shall incur interest at the rate of 1.5% per month, or the maximum amount permitted by law, whichever is less.</p>
+
+<h2>IV. CONFIDENTIALITY</h2>
+<div class="indent">
+    <p><span class="section-number">4.1.</span> **Obligation.** Each Party agrees to use the other Party's Confidential Information solely in connection with the performance of this Agreement.</p>
+    <p><span class="section-number">4.2.</span> **Exceptions.** Confidential Information does not include information that is publicly available through no fault of the receiving Party.</p>
+</div>
+
+{# Example of a long section that will likely trigger a natural page break #}
+<h3>4.3. Proprietary Rights</h3>
+<p>All intellectual property rights, including copyrights, patents, patent disclosures and inventions (whether patentable or not), trade secrets, trademarks, service marks, trade names, logos, domain names, together with all of the goodwill associated therewith, derivative works and all other rights (collectively, "Intellectual Property Rights") in and to all Deliverables shall be owned by the Client.</p>
+<p>ServiceCo agrees to execute all necessary documents to vest title to such Intellectual Property Rights in Client. This includes, without limitation, executing any assignments or waivers of moral rights required to fully transfer ownership. The Client retains all rights not expressly granted to ServiceCo herein. This provision survives the termination of the Agreement.</p>
+
+<div class="footer">
+    Page 1 of 2
+</div>
+
+<div class="page-break-after"></div>
+
+<h2>V. TERMINATION</h2>
+<p>Either Party may terminate this Agreement upon thirty (30) days prior written notice to the other Party.</p>
+
+{# === Flexbox Signature Block (Replacing the old table) === #}
+<div style="margin-top: 100px;">
+    <p>IN WITNESS WHEREOF, the Parties hereto have caused this Agreement to be executed by their duly authorized representatives as of the Effective Date.</p>
+
+    <div class="signature-container">
+        <div class="signature-block">
+            <div class="signature-line"></div>
+            <p>**ServiceCo Global, Inc.**</p>
+        </div>
+        <div class="signature-block">
+            <div class="signature-line"></div>
+            <p>**Client**</p>
+        </div>
+    </div>
+</div>
+
+<h3>Distant image</h3>
+<div style="text-align: center; margin-top: 50px; opacity: 0.5; background-color: red;">
+    <img src="https://www.php.net/images/logos/php-logo-white.svg" alt="Decorative Element" style="max-width: 300px; height: auto;">
+</div>
+
+<h3>Local image</h3>
+<div style="text-align: center; margin-top: 50px; opacity: 0.5; background-color: blue;">
+    <img src="dist/img/drupal.svg" alt="Decorative Element" style="max-width: 300px; height: auto;">
+</div>
+
+<h3>Local image with twig asset() function</h3>
+<div style="text-align: center; margin-top: 50px; opacity: 0.5; background-color: yellow;">
+    <img src="{{ asset('dist/img/composer.svg') }}" alt="Decorative Element" style="max-width: 300px; height: auto;">
+</div>
+
+<div class="footer">
+    Page 2 of 2
+</div>
+
+</body>
+</html>

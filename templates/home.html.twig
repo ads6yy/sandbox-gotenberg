@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Gotenberg SANDBOX</h1>
+
+    <a href="/template">Template</a>
+
+    <h2>Twig / Html ==> PDF</h2>
+    <ul>
+        <li>
+            <a href="/dom-pdf">Dom PDF</a>
+        </li>
+        <li>
+            <a href="/gotenberg-bundle-pdf">Sensiolabs Gotenberg Bundle PDF (Symfony connector)</a>
+        </li>
+    </ul>
+
+    <h2>URL ==> PDF</h2>
+    <ul>
+        <li>
+            <a href="/gotenberg-php-pdf">Gotenberg PHP PDF via URL (Interaction en direct avec les API Gotenberg)</a>
+        </li>
+        <li>
+            <a href="/gotenberg-bundle-pdf-url">Sensiolabs Gotenberg Bundle PDF via URL (Symfony connector)</a>
+        </li>
+    </ul>
+
+    <h2>Docx ==> PDF</h2>
+    <ul>
+        <li>
+            <a href="/gotenberg-bundle-basic-docx">Sensiolabs Gotenberg Bundle Basic DOCX via URL (Symfony connector)</a>
+        </li>
+        <li>
+            <a href="/gotenberg-bundle-complex-docx">Sensiolabs Gotenberg Bundle Complex DOCX via URL (Symfony connector)</a>
+        </li>
+    </ul>
+
+
+    <h2>Pptx ==> PDF</h2>
+    <ul>
+        <li>
+            <a href="/gotenberg-bundle-basic-pptx">Sensiolabs Gotenberg Bundle Basic PPTX via URL (Symfony connector)</a>
+        </li>
+        <li>
+            <a href="/gotenberg-bundle-complex-pptx">Sensiolabs Gotenberg Bundle Complex PPTX via URL (Symfony connector)</a>
+        </li>
+    </ul>
+
+
+    <h2>Merge / Split </h2>
+    <ul>
+
+    </ul>
+{% endblock %}
