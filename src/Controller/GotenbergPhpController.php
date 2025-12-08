@@ -16,8 +16,8 @@ final class GotenbergPhpController extends AbstractController
     {
     }
 
-    #[Route('/gotenberg-php-pdf', name: 'generate_gotenberg_php_pdf')]
-    public function generateGotenbergPhpPdf(): BinaryFileResponse
+    #[Route('/gotenberg-php-client-generate-url-pdf', name: 'gotenberg_php_client_generate_url_pdf')]
+    public function gotenbergPhpClientGenerateUrlPdf(): BinaryFileResponse
     {
         $this->stopwatch->start('generate_pdf', 'PDF');
 

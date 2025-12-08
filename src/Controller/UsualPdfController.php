@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Stopwatch\Stopwatch;
 
-final class CurrentPdfController extends AbstractController
+final class UsualPdfController extends AbstractController
 {
     public function __construct(
         protected readonly Stopwatch                                $stopwatch,
@@ -21,8 +21,8 @@ final class CurrentPdfController extends AbstractController
     {
     }
 
-    #[Route('/dom-pdf', name: 'generate_dom_pdf')]
-    public function generateDomPdf(): void
+    #[Route('/usual-generate-twig-pdf', name: 'usual_generate_twig_pdf')]
+    public function usualGenerateTwigPdf(): void
     {
         $this->stopwatch->start('generate_pdf', 'PDF');
 
@@ -42,8 +42,8 @@ final class CurrentPdfController extends AbstractController
         $dompdf->stream();
     }
 
-    #[Route('/dom-pdf-split-merge', name: 'split_dom_pdf')]
-    public function splitMergeDomPdf(): Response
+    #[Route('/usual-generate-twig-split-merge-pdf', name: 'usual_generate_twig_split_merge_pdf')]
+    public function usualGenerateTwigSplitMergePdf(): Response
     {
         $fileName = sprintf('test_%s.pdf', time());
         $filePath = sprintf('%s/%s/%s',

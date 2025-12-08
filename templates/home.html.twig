@@ -5,50 +5,49 @@
 
     <a href="/template">Template</a>
 
-    <h2>Twig / Html ==> PDF</h2>
+    <h2>Usual PDF ways</h2>
     <ul>
         <li>
-            <a href="/dom-pdf">Dom PDF</a>
+            <a href="{{ path('usual_generate_twig_pdf') }}">Usual PDF generated from twig & streamed</a>
         </li>
         <li>
-            <a href="/gotenberg-bundle-pdf">Sensiolabs Gotenberg Bundle PDF (Symfony connector)</a>
+            <a href="{{ path('usual_generate_twig_split_merge_pdf') }}">Usual PDF generated from twig & splited & merged & saved</a>
         </li>
     </ul>
 
-    <h2>URL ==> PDF</h2>
+    <h2>Gotenberg PHP Client</h2>
     <ul>
         <li>
-            <a href="/gotenberg-php-pdf">Gotenberg PHP PDF via URL (Interaction en direct avec les API Gotenberg)</a>
-        </li>
-        <li>
-            <a href="/gotenberg-bundle-pdf-url">Sensiolabs Gotenberg Bundle PDF via URL (Symfony connector)</a>
+            <a href="{{ path('gotenberg_php_client_generate_url_pdf') }}">Gotenberg PHP Client PDF generated from url & streamed</a>
         </li>
     </ul>
 
-    <h2>Docx ==> PDF</h2>
+    <h2>Gotenberg Symfony Bundle</h2>
     <ul>
         <li>
-            <a href="/gotenberg-bundle-basic-docx">Sensiolabs Gotenberg Bundle Basic DOCX via URL (Symfony connector)</a>
+            <a href="{{ path('gotenberg_symfony_bundle_generate_twig_pdf') }}">Gotenberg Symfony Bundle PDF generated from twig & streamed</a>
         </li>
         <li>
-            <a href="/gotenberg-bundle-complex-docx">Sensiolabs Gotenberg Bundle Complex DOCX via URL (Symfony connector)</a>
+            <a href="{{ path('gotenberg_symfony_bundle_generate_url_pdf') }}">Gotenberg Symfony Bundle PDF generated from url & streamed</a>
+        </li>
+        <li>
+            <a href="{{ path('gotenberg_symfony_bundle_generate_basic_docx_pdf') }}">Gotenberg Symfony Bundle PDF generated from basic docx & streamed</a>
+        </li>
+        <li>
+            <a href="{{ path('gotenberg_symfony_bundle_generate_complex_docx_pdf') }}">Gotenberg Symfony Bundle PDF generated from complex docx & streamed</a>
+        </li>
+        <li>
+            <a href="{{ path('gotenberg_symfony_bundle_generate_basic_pptx_pdf') }}">Gotenberg Symfony Bundle PDF generated from basic pptx & streamed</a>
+        </li>
+        <li>
+            <a href="{{ path('gotenberg_symfony_bundle_generate_complex_pptx_pdf') }}">Gotenberg Symfony Bundle PDF generated from complex pptx & streamed</a>
+        </li>
+        <li>
+            <a href="{{ path('gotenberg_symfony_bundle_generate_twig_split_merge_pdf') }}">Gotenberg Symfony Bundle PDF generated from twig & splited & merged & streamed</a>
+        </li>
+        <li>
+            <a href="{{ path('gotenberg_symfony_bundle_generate_twig_async_pdf') }}">Gotenberg Symfony Bundle PDF generated from twig asynchronously</a>
         </li>
     </ul>
 
-
-    <h2>Pptx ==> PDF</h2>
-    <ul>
-        <li>
-            <a href="/gotenberg-bundle-basic-pptx">Sensiolabs Gotenberg Bundle Basic PPTX via URL (Symfony connector)</a>
-        </li>
-        <li>
-            <a href="/gotenberg-bundle-complex-pptx">Sensiolabs Gotenberg Bundle Complex PPTX via URL (Symfony connector)</a>
-        </li>
-    </ul>
-
-
-    <h2>Merge / Split </h2>
-    <ul>
-
-    </ul>
 {% endblock %}

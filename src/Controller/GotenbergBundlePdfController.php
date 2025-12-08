@@ -27,8 +27,8 @@ final class GotenbergBundlePdfController extends AbstractController
     {
     }
 
-    #[Route('/gotenberg-bundle-pdf', name: 'generate_gotenberg_bundle_pdf')]
-    public function generateGotenbergBundlePdf(GotenbergPdfInterface $gotenberg): StreamedResponse
+    #[Route('/gotenberg-symfony-bundle-generate-twig-pdf', name: 'gotenberg_symfony_bundle_generate_twig_pdf')]
+    public function gotenbergSymfonyBundleGenerateTwigPdf(GotenbergPdfInterface $gotenberg): StreamedResponse
     {
         $this->stopwatch->start('generate_pdf', 'PDF');
 
@@ -42,8 +42,8 @@ final class GotenbergBundlePdfController extends AbstractController
         return $pdf->stream();
     }
 
-    #[Route('/gotenberg-bundle-pdf-url', name: 'generate_gotenberg_bundle_pdf_url')]
-    public function generateGotenbergBundlePdfUrl(GotenbergPdfInterface $gotenberg): StreamedResponse
+    #[Route('/gotenberg-symfony-bundle-generate-url-pdf', name: 'gotenberg_symfony_bundle_generate_url_pdf')]
+    public function gotenbergSymfonyBundleGenerateUrlPdf(GotenbergPdfInterface $gotenberg): StreamedResponse
     {
         $this->stopwatch->start('generate_pdf', 'PDF');
 
@@ -56,8 +56,8 @@ final class GotenbergBundlePdfController extends AbstractController
         return $pdf->stream();
     }
 
-    #[Route('/gotenberg-bundle-basic-docx', name: 'generate_gotenberg_bundle_basic_docx')]
-    public function generateGotenbergBundleBasicDocxUrl(GotenbergPdfInterface $gotenberg): StreamedResponse
+    #[Route('/gotenberg-symfony-bundle-generate-basic-docx-pdf', name: 'gotenberg_symfony_bundle_generate_basic_docx_pdf')]
+    public function gotenbergSymfonyBundleGenerateBasicDocxPdf(GotenbergPdfInterface $gotenberg): StreamedResponse
     {
         $this->stopwatch->start('generate_pdf', 'PDF');
 
@@ -70,8 +70,8 @@ final class GotenbergBundlePdfController extends AbstractController
         return $pdf->stream();
     }
 
-    #[Route('/gotenberg-bundle-complex-docx', name: 'generate_gotenberg_bundle_complex_docx')]
-    public function generateGotenbergBundleComplexDocxUrl(GotenbergPdfInterface $gotenberg): StreamedResponse
+    #[Route('/gotenberg-symfony-bundle-generate-complex-docx-pdf', name: 'gotenberg_symfony_bundle_generate_complex_docx_pdf')]
+    public function gotenbergSymfonyBundleGenerateComplexDocxPdf(GotenbergPdfInterface $gotenberg): StreamedResponse
     {
         $this->stopwatch->start('generate_pdf', 'PDF');
 
@@ -84,8 +84,8 @@ final class GotenbergBundlePdfController extends AbstractController
         return $pdf->stream();
     }
 
-    #[Route('/gotenberg-bundle-basic-pptx', name: 'generate_gotenberg_bundle_basic_pptx')]
-    public function generateGotenbergBundleBasicPptxUrl(GotenbergPdfInterface $gotenberg): StreamedResponse
+    #[Route('/gotenberg-symfony-bundle-generate-basic-pptx-pdf', name: 'gotenberg_symfony_bundle_generate_basic_pptx_pdf')]
+    public function gotenbergSymfonyBundleGenerateBasicPptxPdf(GotenbergPdfInterface $gotenberg): StreamedResponse
     {
         $this->stopwatch->start('generate_pdf', 'PDF');
 
@@ -98,8 +98,8 @@ final class GotenbergBundlePdfController extends AbstractController
         return $pdf->stream();
     }
 
-    #[Route('/gotenberg-bundle-complex-pptx', name: 'generate_gotenberg_bundle_complex_pptx')]
-    public function generateGotenbergBundleComplexPptxUrl(GotenbergPdfInterface $gotenberg): StreamedResponse
+    #[Route('/gotenberg-symfony-bundle-generate-complex-pptx-pdf', name: 'gotenberg_symfony_bundle_generate_complex_pptx_pdf')]
+    public function gotenbergSymfonyBundleGenerateComplexPptxPdf(GotenbergPdfInterface $gotenberg): StreamedResponse
     {
         $this->stopwatch->start('generate_pdf', 'PDF');
 
@@ -112,9 +112,8 @@ final class GotenbergBundlePdfController extends AbstractController
         return $pdf->stream();
     }
 
-
-    #[Route('/gotenberg-bundle-split-merge-pdf', name: 'split-merge_gotenberg_bundle_pdf')]
-    public function splitMergeGotenbergBundlePdf(GotenbergPdfInterface $gotenberg): StreamedResponse
+    #[Route('/gotenberg-symfony-bundle-generate-twig-split-merge-pdf', name: 'gotenberg_symfony_bundle_generate_twig_split_merge_pdf')]
+    public function gotenbergSymfonyBundleGenerateTwigSplitMergePdf(GotenbergPdfInterface $gotenberg): StreamedResponse
     {
         $fileName = sprintf('2gotenberg_test_%s', time());
         $fileNameWithExtension = sprintf('%s.pdf', $fileName);
@@ -212,9 +211,8 @@ final class GotenbergBundlePdfController extends AbstractController
         return $pdfMerged->stream();
     }
 
-
-    #[Route('/gotenberg-bundle-webhook-pdf', name: 'webhook_generate_gotenberg_bundle_pdf')]
-    public function webhookGenerateGotenbergBundlePdf(GotenbergPdfInterface $gotenberg): Response
+    #[Route('/gotenberg-symfony-bundle-generate-twig-async-pdf', name: 'gotenberg_symfony_bundle_generate_twig_async_pdf')]
+    public function gotenbergSymfonyBundleGenerateTwigAsyncPdf(GotenbergPdfInterface $gotenberg): Response
     {
         $this->stopwatch->start('webhook_generate_pdf', 'PDF');
 
@@ -230,8 +228,8 @@ final class GotenbergBundlePdfController extends AbstractController
         return new Response('Votre pdf est en cours de création');
     }
 
-    #[Route('/gotenberg-bundle-webhook-success', name: 'webhook_success_gotenberg_bundle_pdf')]
-    public function webhookSuccessGotenbergBundlePdf(Request $request): Response
+    #[Route('/gotenberg-symfony-bundle-webhook-success-pdf', name: 'gotenberg_symfony_bundle_webhook_success_pdf')]
+    public function gotenbergSymfonyBundleWebhookSuccessPdf(Request $request): Response
     {
         $this->logger->info('[GOTENBERG] - [WEBHOOK] - Réception du webhook SUCCESS de Gotenberg.');
 
@@ -247,13 +245,14 @@ final class GotenbergBundlePdfController extends AbstractController
         return new Response();
     }
 
-    #[Route('/gotenberg-bundle-webhook-error', name: 'webhook_error_gotenberg_bundle_pdf')]
-    public function webhookErrorGotenbergBundlePdf(Request $request): Response
+    #[Route('/gotenberg-symfony-bundle-webhook-error-pdf', name: 'gotenberg_symfony_bundle_webhook_error_pdf')]
+    public function gotenbergSymfonyBundleWebhookErrorPdf(Request $request): Response
     {
         $this->logger->info('[GOTENBERG] - [WEBHOOK] - Réception du webhook ERROR de Gotenberg.');
 
         return new Response();
     }
+
 
     #[Route('/gotenberg-bundle-webhook-merge-massive-pdf', name: 'webhook_merge_massive_gotenberg_bundle_pdf')]
     public function mergeMassiveGotenbergBundlePdf(GotenbergPdfInterface $gotenberg): Response

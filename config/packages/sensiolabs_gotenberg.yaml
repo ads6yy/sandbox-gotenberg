@@ -11,10 +11,10 @@ sensiolabs_gotenberg:
     pdf:
       html:
         webhook:
-          config_name: 'webhook_pdf'
+#          config_name: 'webhook_pdf'
       split:
         webhook:
-          config_name: 'webhook_pdf'
+#          config_name: 'webhook_pdf'
       merge:
         webhook:
-          config_name: 'webhook_pdf'
+#          config_name: 'webhook_pdf'

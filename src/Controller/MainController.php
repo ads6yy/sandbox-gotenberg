@@ -9,9 +9,7 @@ use Symfony\Component\Stopwatch\Stopwatch;
 
 final class MainController extends AbstractController
 {
-    public function __construct(
-        protected readonly Stopwatch $stopwatch,
-    )
+    public function __construct()
     {
     }
 
