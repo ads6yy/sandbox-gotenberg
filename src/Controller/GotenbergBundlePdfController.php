@@ -217,7 +217,7 @@ final class GotenbergBundlePdfController extends AbstractController
         $this->stopwatch->start('webhook_generate_pdf', 'PDF');
 
         $pdf = $gotenberg->html()
-            ->webhookConfiguration('webhook_pdf')
+            ->webhookConfiguration('webhook_pdf_config')
             ->skipNetworkIdleEvent()
             ->content('pdf/gotenberg-template.html.twig')
             ->fileName('webhook_generated');

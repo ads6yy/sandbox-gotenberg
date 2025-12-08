@@ -2,7 +2,7 @@ sensiolabs_gotenberg:
   assets_directory: 'public'
   http_client: 'gotenberg.client'
   webhook:
-    webhook_pdf:
+    webhook_pdf_config:
       success:
         url: "http://host.docker.internal:8500/gotenberg-bundle-webhook-success"
       error:
