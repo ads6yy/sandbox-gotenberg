@@ -234,14 +234,20 @@ final class GotenbergBundlePdfController extends AbstractController
     {
         $this->logger->info('[GOTENBERG] - [WEBHOOK] - Réception du webhook SUCCESS de Gotenberg.');
 
-        // @todo ne fonctionne pas.
         $fileFolder = sprintf('%s/%s',
             $this->projectDir,
             'public/dist/export',
         );
-        $fileMergedName = "massive_merged_final_result.pdf";
+        $fileName = "webhook_generated.pdf";
 
-        file_put_contents("$fileFolder/$fileMergedName", $request->getContent());
+        // Empty current directory.
+        $finder = new Finder();
+        $finder->in($fileFolder)->depth('== 0');
+        foreach ($finder as $file) {
+            $this->filesystem->remove($file->getRealPath());
+        }
+
+        file_put_contents("$fileFolder/$fileName", $request->getContent());
 
         return new Response();
     }
@@ -254,9 +260,51 @@ final class GotenbergBundlePdfController extends AbstractController
         return new Response();
     }
 
+    #[Route('/gotenberg-symfony-bundle-merge-multiple-massive-pdf', name: 'gotenberg_symfony_bundle_merge_multiple_massive_pdf')]
+    public function gotenbergSymfonyBundleMergeMultipleMassivePdf(GotenbergPdfInterface $gotenberg): Response
+    {
+        $fileToMergeFolderPath = sprintf('%s/%s',
+            $this->projectDir,
+            'public/dist/example-files',
+        );
+        $fileFolder = sprintf('%s/%s',
+            $this->projectDir,
+            'public/dist/export',
+        );
+        $fileName = "merged_generated";
 
-    #[Route('/gotenberg-bundle-webhook-merge-massive-pdf', name: 'webhook_merge_massive_gotenberg_bundle_pdf')]
-    public function mergeMassiveGotenbergBundlePdf(GotenbergPdfInterface $gotenberg): Response
+        // Empty current directory.
+        $finder = new Finder();
+        $finder->in($fileFolder)->depth('== 0');
+        foreach ($finder as $file) {
+            $this->filesystem->remove($file->getRealPath());
+        }
+
+        // MERGE.
+        $this->stopwatch->start('massive_merge_pdf', 'PDF');
+
+        $pdfMerged = $gotenberg->merge()
+            ->files(
+                "$fileToMergeFolderPath/document-merge-1.pdf",
+                "$fileToMergeFolderPath/document-merge-2.pdf",
+                "$fileToMergeFolderPath/document-merge-3.pdf",
+                "$fileToMergeFolderPath/document-merge-4.pdf",
+                "$fileToMergeFolderPath/document-merge-5.pdf",
+            )
+            ->fileName($fileName)
+            ->processor(new FileProcessor(
+                $this->filesystem,
+                $fileFolder,
+            ))
+            ->generate();
+
+        $this->stopwatch->stop('massive_merge_pdf');
+
+        return $pdfMerged->stream();
+    }
+
+    #[Route('/gotenberg-symfony-bundle-merge-multiple-massive-async-pdf', name: 'gotenberg_symfony_bundle_merge_multiple_massive_async_pdf')]
+    public function gotenbergSymfonyBundleMergeMultipleMassiveAsyncPdf(GotenbergPdfInterface $gotenberg): Response
     {
         $fileToMergeFolderPath = sprintf('%s/%s',
             $this->projectDir,
@@ -281,6 +329,9 @@ final class GotenbergBundlePdfController extends AbstractController
             ->files(
                 "$fileToMergeFolderPath/document-merge-1.pdf",
                 "$fileToMergeFolderPath/document-merge-2.pdf",
+                "$fileToMergeFolderPath/document-merge-3.pdf",
+                "$fileToMergeFolderPath/document-merge-4.pdf",
+                "$fileToMergeFolderPath/document-merge-5.pdf",
             )
             ->generateAsync();
 
