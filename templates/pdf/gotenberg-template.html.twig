@@ -229,5 +229,118 @@
     Page 2 of 2
 </div>
 
+<form action="/test" method="post" style="margin-top: 5rem;">
+    <fieldset>
+        <legend>Personal Information</legend>
+
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter password" required>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" placeholder="+1 (555) 123-4567">
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" min="18" max="100" placeholder="18">
+
+        <label for="birthdate">Date of Birth:</label>
+        <input type="date" id="birthdate" name="birthdate">
+
+        <label for="website">Website URL:</label>
+        <input type="url" id="website" name="website" placeholder="https://example.com">
+    </fieldset>
+
+    <fieldset>
+        <legend>Preferences</legend>
+
+        <label for="country">Country:</label>
+        <select id="country" name="country">
+            <option value="">-- Select a Country --</option>
+            <option value="us">United States</option>
+            <option value="uk">United Kingdom</option>
+            <option value="ca">Canada</option>
+            <option value="au">Australia</option>
+            <option value="fr">France</option>
+            <option value="de">Germany</option>
+        </select>
+
+        <label for="service">Service Type:</label>
+        <select id="service" name="service" multiple size="4">
+            <option value="consulting">Consulting</option>
+            <option value="development">Development</option>
+            <option value="maintenance">Maintenance</option>
+            <option value="support">Support</option>
+        </select>
+
+        <label>Gender:</label>
+        <div>
+            <input type="radio" id="male" name="gender" value="male">
+            <label for="male">Male</label>
+
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Female</label>
+
+            <input type="radio" id="other" name="gender" value="other">
+            <label for="other">Other</label>
+        </div>
+
+        <label>Interests:</label>
+        <div>
+            <input type="checkbox" id="tech" name="interests[]" value="technology">
+            <label for="tech">Technology</label>
+
+            <input type="checkbox" id="business" name="interests[]" value="business">
+            <label for="business">Business</label>
+
+            <input type="checkbox" id="design" name="interests[]" value="design">
+            <label for="design">Design</label>
+
+            <input type="checkbox" id="marketing" name="interests[]" value="marketing">
+            <label for="marketing">Marketing</label>
+        </div>
+
+        <label for="experience">Experience Level:</label>
+        <input type="range" id="experience" name="experience" min="0" max="10" value="5">
+        <span>(0 = Beginner, 10 = Expert)</span>
+
+        <label for="color">Favorite Color:</label>
+        <input type="color" id="color" name="color" value="#3498db">
+    </fieldset>
+
+    <fieldset>
+        <legend>Additional Information</legend>
+
+        <label for="comments">Comments:</label>
+        <textarea id="comments" name="comments" rows="4" cols="50" placeholder="Enter any additional comments here..."></textarea>
+
+        <label for="resume">Upload Resume:</label>
+        <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx">
+
+        <label for="appointment">Preferred Appointment Time:</label>
+        <input type="datetime-local" id="appointment" name="appointment">
+
+        <label>
+            <input type="checkbox" name="terms" required>
+            I agree to the terms and conditions
+        </label>
+
+        <label>
+            <input type="checkbox" name="newsletter">
+            Subscribe to newsletter
+        </label>
+    </fieldset>
+
+    <div style="margin-top: 20px;">
+        <button type="submit">Submit Form</button>
+        <button type="reset">Reset Form</button>
+        <button type="button">Cancel</button>
+    </div>
+</form>
+
 </body>
 </html>
