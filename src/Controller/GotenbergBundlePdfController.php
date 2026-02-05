@@ -36,8 +36,8 @@ final class GotenbergBundlePdfController extends AbstractController
             ->userPassword('Test123!')
             ->skipNetworkIdleEvent(true)
             ->content('pdf/gotenberg-template.html.twig')
-            ->header('pdf/header.html')
-            ->footer('pdf/footer.html')
+            ->header('pdf/header.html.twig')
+            ->footer('pdf/footer.html.twig')
             ->generate();
 
         $this->stopwatch->stop('generate_pdf');
