@@ -229,6 +229,79 @@
     Page 2 of 2
 </div>
 
+<h2 style="margin-top: 50px; page-break-before: always;">Large Data Table - Multi-Page Test</h2>
+
+<style>
+    .large-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 30px 0;
+        font-size: 10pt;
+    }
+    .large-table thead {
+        background-color: #2c3e50;
+        color: white;
+        font-weight: bold;
+    }
+    .large-table th,
+    .large-table td {
+        border: 1px solid #ddd;
+        padding: 8px 12px;
+        text-align: left;
+    }
+    .large-table tbody tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+    .large-table tbody tr:hover {
+        background-color: #f1f1f1;
+    }
+    .large-table td.number {
+        text-align: right;
+    }
+    .large-table td.center {
+        text-align: center;
+    }
+</style>
+
+<table class="large-table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Product Name</th>
+            <th>Category</th>
+            <th>SKU</th>
+            <th>Quantity</th>
+            <th>Unit Price</th>
+            <th>Total Price</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in 1..50 %}
+        <tr>
+            <td class="center">{{ i }}</td>
+            <td>Product Item {{ i }} - {{ ['Premium', 'Standard', 'Basic', 'Deluxe', 'Professional'][random(4)] }} Edition</td>
+            <td>{{ ['Electronics', 'Software', 'Hardware', 'Accessories', 'Services', 'Consulting'][random(5)] }}</td>
+            <td>SKU-{{ '%05d'|format(i) }}-{{ ['A', 'B', 'C', 'D'][random(3)] }}</td>
+            <td class="number">{{ random(1, 999) }}</td>
+            <td class="number">${{ '%0.2f'|format(random(10, 9999) / 100) }}</td>
+            <td class="number">${{ '%0.2f'|format(random(100, 99999) / 100) }}</td>
+            <td class="center">
+                {% set statuses = ['✓ In Stock', '⚠ Low Stock', '✗ Out of Stock', '↻ On Order'] %}
+                {{ statuses[random(3)] }}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    <tfoot>
+        <tr style="background-color: #34495e; color: white; font-weight: bold;">
+            <td colspan="6" style="text-align: right;">Grand Total:</td>
+            <td class="number">$1,234,567.89</td>
+            <td class="center">-</td>
+        </tr>
+    </tfoot>
+</table>
+
 <form action="/test" method="post" style="margin-top: 5rem;">
     <fieldset>
         <legend>Personal Information</legend>
