@@ -34,7 +34,7 @@ final class GotenbergBundlePdfController extends AbstractController
 
         $pdf = $gotenberg->html()
             ->userPassword('Test123!')
-            ->skipNetworkIdleEvent(true)
+            // ->skipNetworkIdleEvent(true) // Commented out to allow JavaScript execution
             ->content('pdf/gotenberg-template.html.twig')
             ->header('pdf/header.html.twig')
             ->footer('pdf/footer.html.twig')
